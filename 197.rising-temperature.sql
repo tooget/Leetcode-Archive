@@ -1,0 +1,42 @@
+--
+-- @lc app=leetcode id=197 lang=mysql
+--
+-- [197] Rising Temperature
+--
+-- https://leetcode.com/problems/rising-temperature/description/
+--
+-- database
+-- Easy (35.45%)
+-- Total Accepted:    83.2K
+-- Total Submissions: 234.8K
+-- Testcase Example:  '{"headers": {"Weather": ["Id", "RecordDate", "Temperature"]}, "rows": {"Weather": [[1, "2015-01-01", 10], [2, "2015-01-02", 25], [3, "2015-01-03", 20], [4, "2015-01-04", 30]]}}'
+--
+-- Given a Weather table, write a SQL query to find all dates' Ids with higher
+-- temperature compared to its previous (yesterday's) dates.
+-- 
+-- 
+-- +---------+------------------+------------------+
+-- | Id(INT) | RecordDate(DATE) | Temperature(INT) |
+-- +---------+------------------+------------------+
+-- |       1 |       2015-01-01 |               10 |
+-- |       2 |       2015-01-02 |               25 |
+-- |       3 |       2015-01-03 |               20 |
+-- |       4 |       2015-01-04 |               30 |
+-- +---------+------------------+------------------+
+-- 
+-- 
+-- For example, return the following Ids for the above Weather table:
+-- 
+-- 
+-- +----+
+-- | Id |
+-- +----+
+-- |  2 |
+-- |  4 |
+-- +----+
+-- 
+-- 
+--
+# Write your MySQL query statement below
+
+SELECT A.Id FROM Weather A LEFT JOIN Weather B ON DATE_SUB(A.RecordDate, INTERVAL 1 DAY) = B.RecordDate WHERE (A.Temperature - B.Temperature) > 0
