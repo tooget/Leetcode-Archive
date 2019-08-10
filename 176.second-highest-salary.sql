@@ -59,3 +59,5 @@ from (select Distinct Salary from Employee order by Salary desc) A
 ,(select @rownum :=0) B
 ) c
 WHERE ROWNUM > 1
+
+-- select Salary as SecondHighestSalary from Employee order by Salary desc limit 1 offset 1
