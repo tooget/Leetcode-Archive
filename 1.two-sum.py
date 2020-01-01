@@ -29,13 +29,19 @@ class Solution(object):
         :rtype: List[int]
         """
         
-        def compareSumWithTarget():
-
-            numsIdx = range(0, len(nums))
-            
-            for i in numsIdx:
-                for j in range(0, i):
-                    if nums[i] + nums[j] == target:
-                        yield i, j
+        # def compareSumWithTarget():
+        #     numsIdx = range(0, len(nums))
+        #     for i in numsIdx:
+        #         for j in range(0, i):
+        #             if nums[i] + nums[j] == target:
+        #                 yield i, j
         
-        return list(next(compareSumWithTarget()))
+        # return list(next(compareSumWithTarget()))
+
+        d = {}
+        for i, n in enumerate(nums):
+            m = target - n
+            if m in d:
+                return [d[m], i]
+            else:
+                d[n] = i
