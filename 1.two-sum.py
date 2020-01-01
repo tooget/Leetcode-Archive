@@ -31,7 +31,6 @@ class Solution(object):
         
         def compareSumWithTarget():
 
-            from itertools import count, combinations 
             numsIdx = range(0, len(nums))
             
             for i in numsIdx:
